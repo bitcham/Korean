@@ -1,0 +1,148 @@
+.search-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.search-page h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.search-input {
+  flex: 1;
+  max-width: 500px;
+  padding: 12px 15px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.search-input:focus {
+  border-color: #4dabf7;
+}
+
+/* Button styling is already in Button.css */
+
+.error-message {
+  color: #e03131;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.search-results {
+  margin-top: 20px;
+}
+
+.results-summary {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #555;
+}
+
+.words-section, .sentences-section {
+  margin-bottom: 40px;
+}
+
+.words-section h2, .sentences-section h2 {
+  border-bottom: 2px solid #4dabf7;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.word-cards, .sentence-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.word-card, .sentence-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.word-card:hover, .sentence-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.korean {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #212529;
+}
+
+.english {
+  font-size: 16px;
+  color: #495057;
+  margin-bottom: 8px;
+}
+
+.romanization {
+  font-size: 14px;
+  color: #868e96;
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
+.category {
+  display: inline-block;
+  background-color: #e7f5ff;
+  color: #1971c2;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+
+.sentence-card {
+  background-color: #f8f9fa;
+}
+
+.sentence-card .korean {
+  font-size: 20px;
+}
+
+.no-results {
+  text-align: center;
+  color: #868e96;
+  font-size: 18px;
+  margin-top: 40px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .search-container {
+    flex-direction: column;
+  }
+  
+  .search-input {
+    max-width: 100%;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  .word-cards, .sentence-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .search-page {
+    padding: 15px;
+  }
+} 

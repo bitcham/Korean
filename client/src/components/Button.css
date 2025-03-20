@@ -1,7 +1,55 @@
 .button {
-    background-color: #000;
-    color: #fff;
     padding: 10px 20px;
     border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.button:active {
+    transform: translateY(0);
+}
+
+.skip {
+    background-color: #4caf50;
+    color: white;
+}
+
+.skip:hover {
+    background-color: #3e9142;
+}
+
+.hint {
+    background-color: #2196f3;
+    color: white;
+}
+
+.hint:hover {
+    background-color: #1976d2;
+}
+
+.check {
+    background-color: #ff9800;
+    color: white;
+}
+
+.check:hover {
+    background-color: #e68900;
+}
+
+.back {
+    background-color: #9e9e9e;
+    color: white;
+}
+
+.back:hover {
+    background-color: #757575;
 }
 

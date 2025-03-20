@@ -1,42 +1,46 @@
-import express, { Request, Response } from 'express';
-import dotenv from 'dotenv';
-
-dotenv.config();
+import express from 'express';
+import cors from 'cors';
+import morgan from 'morgan';
+import helmet from 'helmet';
+import compression from 'compression';
+import { config } from './config';
+import logger from './utils/logger';
+import { notFound, errorHandler } from './middleware/errorMiddleware';
+import koreanRoutes from './routes/api/koreanRoutes';
 
 const app = express();
 
-// Get environment variables
-const SERVER_URL = process.env.SERVER_URL || 'http://localhost:3000';
-const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:5173';
+app.use(helmet());
 
-// Set up CORS
 app.use(cors({
-    origin: CLIENT_URL,
-    credentials: true,
+    origin: config.corsOrigin,
+    credentials: true
 }));
 
-//CORS config
-app.use(cors({
-    origin: CLIENT_URL,
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization'],
-}));
+app.use(compression());
 
-//Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//API Routes for React Frontend
-app.use('/api', koreanRoutes);
+app.use(morgan('dev', {
+    stream: {
+        write: (message: string) => logger.http(message.trim())
+    }
+}));
 
-
-
-
-const port = process.env.PORT || 3000;
-
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+app.get('/', (req, res) => {
+    res.json({ message: 'Korean Learning API is running' });
 });
+
+// API routes
+app.use('/api/korean', koreanRoutes);
+
+// Handle 404 errors
+app.use(notFound);
+
+// Global error handler
+app.use(errorHandler);
+
+export default app;
 
 
